@@ -4,3 +4,11 @@ var searchBtn = document.getElementById("search-btn");
 var searchHistory = document.getElementById("search-history");
 var currentWeather = document.getElementById("current-weather");
 var futureWeather = document.getElementById("future-weather");
+
+searchBtn.on('click', function (event) {
+    event.preventDefault();
+    var city = cityName.value;
+    if (city) {
+        getWeather(city);
+    }
+});
