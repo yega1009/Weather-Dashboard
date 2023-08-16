@@ -25,6 +25,7 @@ function getWeather(city) {
                 fetch(futureApi).then(function (response) {
                     if (response.ok) {
                         response.json().then(function (data) {
+                            console.log(data);
                             displayFutureWeather(data);
                             addCityToHistory(city);
                         });
@@ -55,13 +56,31 @@ function displayCurrentWeather(data) {
     var windSpeedText = "<p>Wind: " + data.wind.speed + " m/s</p>";
     var humidityText = "<p>Humidity: " + data.main.humidity + "%</p>";
 
-    currentWeather.innerHTML = headerText + weatherIcon + temperatureText + humidityText + windSpeedText;
+    currentWeather.innerHTML = headerText + weatherIcon + temperatureText + windSpeedText + humidityText;
 }
 
 function displayFutureWeather(data) {
-    
+    var forecast = "";
+    for (var i = 3; i < data.list.length; i += 8) {
+        var day = data.list[i];
+        var date = new Date(day.dt * 1000).toLocaleDateString();
+
+        var headerText = "<h3>" + date + "</h3>";
+        var weatherIcon = '<img src="https://openweathermap.org/img/w/' + day.weather[0].icon + '.png" alt="' + day.weather[0].description + '">';
+        var temperatureText = "<p>Temp: " + day.main.temp + "°K</p>";
+        var windSpeedText = "<p>Wind: " + day.wind.speed + " m/s</p>";
+        var humidityText = "<p>Humidity: " + day.main.humidity + "%</p>";
+
+        forecast += "<div>";
+        forecast += headerText;
+        forecast += weatherIcon;
+        forecast += temperatureText;
+        forecast += windSpeedText;
+        forecast += humidityText;
+        forecast += "</div>";
+    }
+    futureWeather.innerHTML = forecast;
 }
 
 function addCityToHistory(city) {
-    
 }

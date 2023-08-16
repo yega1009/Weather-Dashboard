@@ -1,0 +1,13 @@
+.container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+#search-history {
+    display: flex;
+    flex-direction: column;
+}
+
+#current-weather, #future-weather {
+    margin-top: 20px;
+}
