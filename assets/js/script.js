@@ -17,13 +17,14 @@ function getWeather(city) {
     var currentApi = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey;
     var futureApi = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + apiKey;
 
-    fetch(currentApi).then(function(response) {
+    fetch(currentApi).then(function (response) {
         if (response.ok) {
-            response.json().then(function(data) {
+            response.json().then(function (data) {
+                console.log(data);
                 displayCurrentWeather(data);
-                fetch(futureApi).then(function(response) {
+                fetch(futureApi).then(function (response) {
                     if (response.ok) {
-                        response.json().then(function(data) {
+                        response.json().then(function (data) {
                             displayFutureWeather(data);
                             addCityToHistory(city);
                         });
@@ -35,13 +36,32 @@ function getWeather(city) {
         } else {
             alert('Failed to fetch current weather data' + response.statusText);
         }
-    }).catch(function(error) {
+    }).catch(function (error) {
         alert('Error during fetch');
     });
 };
 
-function displayCurrentWeather(data) 
+function displayCurrentWeather(data) {
+    var currentDate = new Date();
+    var date = currentDate.toLocaleDateString();
+    var headerText = "<h2>" + data.name + " (" + date + ")</h2>";
 
-function displayFutureWeather(data) 
+    var iconCode = data.weather[0].icon;
+    var weatherDescription = data.weather[0].description;
+    var iconURL = "https://openweathermap.org/img/w/" + iconCode + ".png";
+    var weatherIcon = '<img src="' + iconURL + '" alt="' + weatherDescription + '">';
 
-function addCityToHistory(city) 
+    var temperatureText = "<p>Temp: " + data.main.temp + "°K</p>";
+    var windSpeedText = "<p>Wind: " + data.wind.speed + " m/s</p>";
+    var humidityText = "<p>Humidity: " + data.main.humidity + "%</p>";
+
+    currentWeather.innerHTML = headerText + weatherIcon + temperatureText + humidityText + windSpeedText;
+}
+
+function displayFutureWeather(data) {
+    
+}
+
+function addCityToHistory(city) {
+    
+}
