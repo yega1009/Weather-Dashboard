@@ -1,13 +1,48 @@
+header {
+    background-color: #0e639b;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+}
+
 .container {
+    display: flex;
     width: 80%;
     margin: 20px auto;
+}
+
+.left-column {
+    padding: 20px;
+}
+
+#search-btn,
+#clear-history {
+    background-color: #0e639b;
+    color: white;
+}
+.right-column {
+    flex: 2;
 }
 
 #search-history {
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
 }
 
-#current-weather, #future-weather {
-    margin-top: 20px;
+#current-weather {
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    display: none;
+}
+
+#future-weather {
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    justify-content: space-between;
+    display: none;
 }

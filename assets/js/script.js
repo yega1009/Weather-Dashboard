@@ -1,6 +1,7 @@
 var apiKey = "10b49d2406d4cabc310ecd5ccbb9da7f";
 var cityName = document.getElementById("city-name");
 var searchBtn = document.getElementById("search-btn");
+var clearHistoryBtn = document.getElementById("clear-history");
 var searchHistory = document.getElementById("search-history");
 var currentWeather = document.getElementById("current-weather");
 var futureWeather = document.getElementById("future-weather");
@@ -13,6 +14,12 @@ searchBtn.addEventListener('click', function (event) {
     }
 });
 
+clearHistoryBtn.addEventListener('click', function() {
+    localStorage.removeItem("cities");
+    searchHistory.innerHTML = '';
+});
+
+
 function getWeather(city) {
     var currentApi = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey;
     var futureApi = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + apiKey;
@@ -20,12 +27,10 @@ function getWeather(city) {
     fetch(currentApi).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
-                console.log(data);
                 displayCurrentWeather(data);
                 fetch(futureApi).then(function (response) {
                     if (response.ok) {
                         response.json().then(function (data) {
-                            console.log(data);
                             displayFutureWeather(data);
                             addCityToHistory(city);
                         });
@@ -57,6 +62,7 @@ function displayCurrentWeather(data) {
     var humidityText = "<p>Humidity: " + data.main.humidity + "%</p>";
 
     currentWeather.innerHTML = headerText + weatherIcon + temperatureText + windSpeedText + humidityText;
+    currentWeather.style.display = "block";
 }
 
 function displayFutureWeather(data) {
@@ -80,10 +86,11 @@ function displayFutureWeather(data) {
         forecast += "</div>";
     }
     futureWeather.innerHTML = forecast;
+    futureWeather.style.display = "flex";
 }
 
 function addCityToHistory(city) {
-    var cities = JSON.parse(localStorage.getItem("cities"));
+    var cities = JSON.parse(localStorage.getItem("cities")) || [];
     if (!cities.includes(city)) {
         cities.push(city);
         localStorage.setItem("cities", JSON.stringify(cities));
@@ -94,4 +101,4 @@ function addCityToHistory(city) {
 function displaySearchHistory() {
 }
 
-displaySearchHistory();
+displaySearchHistory()

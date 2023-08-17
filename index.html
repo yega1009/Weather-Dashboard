@@ -8,14 +8,25 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 
+<header>
+    <h1>Weather Dashboard</h1>
+</header>
+
 <body>
     <div class="container">
-        <input id='city-name' type="text" placeholder="San Diego">
-        <button id="search-btn" type="button">Search</button>
-        <div id="search-history"></div>
-        <div id="current-weather"></div>
-        <div id="future-weather"></div>
+        <div class="left-column">
+            <h2>Search for a City:</h2>
+            <input id='city-name' type="text" placeholder="San Diego">
+            <button id="search-btn" type="button">Search</button>
+            <button id="clear-history">Clear</button>
+            <div id="search-history"></div>
+        </div>
+        <div class="right-column">
+            <div id="current-weather"></div>
+            <div id="future-weather"></div>
+        </div>
     </div>
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
