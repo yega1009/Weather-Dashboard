@@ -83,4 +83,15 @@ function displayFutureWeather(data) {
 }
 
 function addCityToHistory(city) {
+    var cities = JSON.parse(localStorage.getItem("cities"));
+    if (!cities.includes(city)) {
+        cities.push(city);
+        localStorage.setItem("cities", JSON.stringify(cities));
+    }
+    displaySearchHistory();
 }
+
+function displaySearchHistory() {
+}
+
+displaySearchHistory();
