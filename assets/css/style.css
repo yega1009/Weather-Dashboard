@@ -1,3 +1,4 @@
+/* Styling for the header section */
 header {
     background-color: #0e639b;
     color: white;
@@ -6,31 +7,38 @@ header {
     width: 100%;
 }
 
+/* Styling for main container that wraps all the content */
 .container {
     display: flex;
     width: 80%;
     margin: 20px auto;
 }
 
+/* Styling for the left column */
 .left-column {
     padding: 20px;
 }
 
+/* Styling for search and clear history buttons */
 #search-btn,
 #clear-history {
     background-color: #0e639b;
     color: white;
 }
+
+/* Styling for the right column */
 .right-column {
     flex: 2;
 }
 
+/* Styling for the search history section */
 #search-history {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
 }
 
+/* Styling for the current weather display */
 #current-weather {
     padding: 20px;
     border: 1px solid #ddd;
@@ -39,6 +47,7 @@ header {
     display: none;
 }
 
+/* Styling for the future weather forecast */
 #future-weather {
     padding: 20px;
     border: 1px solid #ddd;

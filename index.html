@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Dashboard</title>
+    <!-- Link to the external CSS stylesheet -->
     <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 
@@ -13,19 +14,29 @@
 </header>
 
 <body>
+    <!-- Main container wrapping all content -->
     <div class="container">
+        <!-- Left column for city search and search history -->
         <div class="left-column">
             <h2>Search for a City:</h2>
+            <!-- Input field for city name -->
             <input id='city-name' type="text" placeholder="San Diego">
+            <!-- Button to trigger search -->
             <button id="search-btn" type="button">Search</button>
+            <!-- Button to clear search history -->
             <button id="clear-history">Clear</button>
+            <!-- Container for displaying search history -->
             <div id="search-history"></div>
         </div>
+        <!-- Right column for displaying weather data -->
         <div class="right-column">
+            <!-- Container for current weather information -->
             <div id="current-weather"></div>
+            <!-- Container for future weather forecast -->
             <div id="future-weather"></div>
         </div>
     </div>
+    <!-- Link to the external JavaScript script -->
     <script src="./assets/js/script.js"></script>
 </body>
 
